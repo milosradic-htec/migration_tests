@@ -1,0 +1,22 @@
+Difference:  
+"  [
+    {
+-     DateCreated: Date 2022-01-15 00:00:00 UTC {},
++     DateCreated: Date 2022-01-14 23:00:00 UTC {},
+-     DeleteDate: Date 1900-01-01 00:00:00 UTC {},
++     DateDeleted: null,
+      Description: 'Pita sa sirom i jajima',
+      IsAvailable: true,
+      LargeSize: '300gr',
+      LargeSizePrice: '200',
+      MediumSize: '200gr',
+      MediumSizePrice: '150',
+      OrderCounter: 0,
+      PhotoPath: 'https://i.ytimg.com/vi/wvRXhxNDbBA/maxresdefault.jpg',
+      RestaurantName: 'Jakarta',
+      SmallSize: '100gr',
+      SmallSizePrice: '100',
+      Title: 'Pita sa sirom',
+    },
+  ]" 
+ ====================================================================  
