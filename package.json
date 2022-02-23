@@ -1,0 +1,30 @@
+{
+  "name": "migration_tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "ava": {
+    "failFast": false,
+    "failWithoutAssertions": false
+  },
+  "scripts": {
+    "test:local": "ava test.js --timeout=120m -- --env=local",
+    "test:dev": "ava test.js --timeout=120m -- --env=dev",
+    "test:stg": "ava test.js --timeout=120m -- --env=stg",
+    "test:prod": "ava test.js --timeout=120m -- --env=prod",
+    "img:local": "ava test_image.js --timeout=120m -- --env=local"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "minimist": "^1.2.5",
+    "mssql": "^7.3.0"
+  },
+  "devDependencies": {
+    "ava": "^4.0.1",
+    "axios": "^0.26.0",
+    "concordance": "^5.0.4",
+    "pg": "^8.7.1",
+    "resemblejs": "^4.0.1"
+  }
+}
