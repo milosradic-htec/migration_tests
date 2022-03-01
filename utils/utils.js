@@ -13,11 +13,11 @@ var env = args["env"];
 var mssqlConfig = mssqlConfigs[env];
 var pgConfig = pgConfigs[env];
 
-function checkAndSaveReport(t, msqlDb, pgDb, test, notMatching) {
+function checkAndSaveReport(t, msqlDb, pgDb, test) {
   var fileName = "./reports/" + env + "_" + test + ".log";
 
   if (!t.deepEqual(msqlDb, pgDb)) {
-    notMatching = true;
+
 
     var difference = JSON.stringify(concordance.diff(msqlDb, pgDb));
 
@@ -33,7 +33,7 @@ function checkAndSaveReport(t, msqlDb, pgDb, test, notMatching) {
     fs.appendFile(fileName, reportResults, function (err) {
       if (err) throw err;
     });
-  } 
+  }
 }
 
 async function getBufferFromImgUrl(imgUrl) {

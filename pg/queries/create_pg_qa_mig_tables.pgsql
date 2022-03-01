@@ -12,7 +12,7 @@ ALTER TABLE IF EXISTS public."Roles"
     OWNER to admin;
 
 -- Users table
-CREATE TABLE IF NOT EXISTS pg_qa_mig.public."Users"
+CREATE TABLE IF NOT EXISTS public."Users"
 (
     "Id" integer NOT NULL,
     "FirstName" text COLLATE pg_catalog."default",

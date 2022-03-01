@@ -2,7 +2,6 @@ const mssqlUtils = require("./mssql/mssqlUtils");
 const pgUtils = require("./pg/pgUtils");
 const { imgCompareAndRepor, getBufferFromImgUrl } = require("./utils/utils");
 const test = require("ava");
-const compareImages = require("resemblejs/compareImages");
 
 var testSetup = {
   msqlPhotoUrls: [],
@@ -10,7 +9,7 @@ var testSetup = {
   notMatching: false,
 };
 
-test.before("Get all emails", async (t) => {
+test.before("Get all emails", async () => {
   testSetup.msqlPhotoUrls = await mssqlUtils.msGetAllPhotoUrls();
   testSetup.pgPhotoUrls = await pgUtils.pgGetAllPhotoUrls();
 });

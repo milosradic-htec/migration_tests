@@ -1,7 +1,10 @@
+-- Drop database if exist
 DROP DATABASE IF EXISTS MsQaMig;
 
+-- Create database MsQaMig
 CREATE DATABASE MsQaMig;
 
+-- Create table Roles
 CREATE TABLE MsQaMig.dbo.Roles (
 	Id int IDENTITY(1,1) NOT NULL,
 	Name nvarchar(256) COLLATE Latin1_General_100_CI_AS NOT NULL,
@@ -11,6 +14,7 @@ CREATE TABLE MsQaMig.dbo.Roles (
 	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
 	 ON [PRIMARY ] ;
 
+-- Create table Users
 CREATE TABLE MsQaMig.dbo.Users (
 	UserId int IDENTITY(1,1) NOT NULL,
 	UserName nvarchar(256) COLLATE Latin1_General_100_CI_AS NOT NULL,
@@ -26,6 +30,7 @@ CREATE TABLE MsQaMig.dbo.Users (
 	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
 	 ON [PRIMARY ] ;
 	 
+-- Create table Prices
 CREATE TABLE MsQaMig.dbo.Prices (
 	PriceId int IDENTITY(1,1) NOT NULL,
 	Small money NULL,
@@ -35,6 +40,7 @@ CREATE TABLE MsQaMig.dbo.Prices (
 	CONSTRAINT PK_Price PRIMARY KEY (PriceId)
 );
 
+-- Create tabe Addresses
 CREATE TABLE MsQaMig.dbo.Address (
 	AddressId int IDENTITY(1,1) NOT NULL,
 	Country nvarchar(40) COLLATE Latin1_General_100_CI_AS NOT NULL,
@@ -47,6 +53,7 @@ CREATE TABLE MsQaMig.dbo.Address (
 	CONSTRAINT PK_Address PRIMARY KEY (AddressId)
 );
 
+-- Create table Restaurants
 CREATE TABLE MsQaMig.dbo.Restaurants (
 	RestaurantId int IDENTITY(1,1) NOT NULL,
 	AddressId int NULL,
@@ -63,7 +70,7 @@ CREATE TABLE MsQaMig.dbo.Restaurants (
 	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
 	 ON [PRIMARY ] ;
 
-
+-- Create table Profiles
 CREATE TABLE MsQaMig.dbo.Profiles (
 	ProfileId int NOT NULL,
 	AddressId int NOT NULL,
@@ -86,7 +93,7 @@ CREATE TABLE MsQaMig.dbo.Profiles (
 	 ON [PRIMARY ] ;
 	 
 
-	 
+-- Create table Foods
 CREATE TABLE MsQaMig.dbo.Foods (
 	FoodId int IDENTITY(1,1) NOT NULL,
 	RestaurantId int NOT NULL,
@@ -109,7 +116,8 @@ CREATE TABLE MsQaMig.dbo.Foods (
  CREATE NONCLUSTERED INDEX IX_Property_OrderCounter ON MsQaMig.dbo.Foods (  OrderCounter ASC  )  
 	 WITH (  PAD_INDEX = OFF ,FILLFACTOR = 100  ,SORT_IN_TEMPDB = OFF , IGNORE_DUP_KEY = OFF , STATISTICS_NORECOMPUTE = OFF , ONLINE = OFF , ALLOW_ROW_LOCKS = ON , ALLOW_PAGE_LOCKS = ON  )
 	 ON [PRIMARY ] ;
-	 
+
+-- Create table Metadata
 CREATE TABLE MsQaMig.dbo.Metadata (
 	MetadataId int IDENTITY(1,1) NOT NULL,
 	FoodId int NOT NULL,
@@ -120,6 +128,7 @@ CREATE TABLE MsQaMig.dbo.Metadata (
 	CONSTRAINT FK_Metadata_Food_3 FOREIGN KEY (FoodId) REFERENCES MsQaMig.dbo.Foods(FoodId) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
+-- Create table Photos
 CREATE TABLE MsQaMig.dbo.Photos (
 	PhotoId int IDENTITY(1,1) NOT NULL,
 	FoodId int NOT NULL,
@@ -128,6 +137,8 @@ CREATE TABLE MsQaMig.dbo.Photos (
 	CONSTRAINT PK_Photo PRIMARY KEY (PhotoId)
 );
 
+
+-- Populate table Roles
 INSERT INTO MsQaMig.dbo.Roles
     (Name)
 VALUES('User');
@@ -169,7 +180,7 @@ VALUES('Srbija', 'Nikole Pašića', '25', 'Niš', '18000', '+38165555555', '+381
 
 INSERT INTO MsQaMig.dbo.Users
 (UserName, Email, EmailConfirmed, DateCreated, DateDisabled, RoleId)
-VALUES('Restoran', 'restoran@gmail.com', 1, '2022-01-15T00:00:00.000', '', 2);
+VALUES('Restoran', 'restoran@gmail.com', 1, '2022-01-15T00:00:00.000', '', 3);
 
 INSERT INTO MsQaMig.dbo.Restaurants
 (AddressId, Name, Email, PIB, LogoImage, Description, NotPartner)
