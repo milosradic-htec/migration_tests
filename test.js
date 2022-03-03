@@ -4,8 +4,7 @@ const { checkAndSaveReport } = require("./utils/utils");
 const test = require("ava");
 
 var testSetup = {
-  userEmails: [],
-  notMatching: false,
+  userEmails: []
 };
 
 test.before("Get all emails", async () => {
