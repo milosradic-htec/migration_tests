@@ -13,8 +13,8 @@ var env = args["env"];
 var mssqlConfig = mssqlConfigs[env];
 var pgConfig = pgConfigs[env];
 
-function checkAndSaveReport(t, msqlDb, pgDb, testName) {
-  var fileName = "./reports/" + env + "_" + testName + ".log";
+function checkAndSaveReport(t, msqlDb, pgDb, test) {
+  var fileName = "./reports/" + env + "_" + test + ".log";
 
   if (!t.deepEqual(msqlDb, pgDb)) {
 
@@ -49,15 +49,15 @@ async function getBufferFromImgUrl(imgUrl) {
   }
 }
 
-async function imgCompareAndReport(
+async function imgCompareAndRepor(
   t,
   msPhotoBuff,
   pgPhotoBuff,
   msPhotoId,
   pgPhotoId,
-  testName
+  test
 ) {
-  var fileName = "./reports/" + env + "_" + testName + ".log";
+  var fileName = "./reports/" + env + "_" + test + ".log";
 
   const diff = await compareImages(msPhotoBuff, pgPhotoBuff);
   console.log(diff.rawMisMatchPercentage);
@@ -79,5 +79,5 @@ module.exports = {
   pgConfig,
   checkAndSaveReport,
   getBufferFromImgUrl,
-  imgCompareAndReport,
+  imgCompareAndRepor,
 };

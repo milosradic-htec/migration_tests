@@ -5,5 +5,4 @@
 # reports/*
 
 # configs
-configs/mssql_configs.json
-configs/pg_configs.json
+configs/*
