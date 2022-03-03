@@ -1,0 +1,30 @@
+{
+    "local": {
+        "user": "admin",
+        "host": "localhost",
+        "database": "pg_qa_mig",
+        "password": "123456",
+        "port": 5432
+    },
+    "dev":{
+        "user": "dev user",
+        "host": "dev server",
+        "database": "dev db",
+        "password": "dev password",
+        "port": 5432
+    },
+    "stg":{
+        "user": "stage user",
+        "host": "stage server",
+        "database": "stage db",
+        "password": "stage password",
+        "port": 5432
+    },
+    "prod": {
+        "user": "prod user",
+        "host": "prod server",
+        "database": "prod db",
+        "password": "prod password",
+        "port": 5432
+    }
+}

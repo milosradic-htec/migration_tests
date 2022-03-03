@@ -1,15 +1,14 @@
 const mssqlUtils = require("./mssql/mssqlUtils");
 const pgUtils = require("./pg/pgUtils");
-const { imgCompareAndRepor, getBufferFromImgUrl } = require("./utils/utils");
+const { imgCompareAndReport, getBufferFromImgUrl } = require("./utils/utils");
 const test = require("ava");
 
 var testSetup = {
   msqlPhotoUrls: [],
-  pgPhotoUrls: [],
-  notMatching: false,
+  pgPhotoUrls: []
 };
 
-test.before("Get all emails", async () => {
+test.before("Get all photo URLs", async () => {
   testSetup.msqlPhotoUrls = await mssqlUtils.msGetAllPhotoUrls();
   testSetup.pgPhotoUrls = await pgUtils.pgGetAllPhotoUrls();
 });
@@ -26,6 +25,6 @@ test.serial("Compare images", async (t) => {
     var msPhotoBuff = await getBufferFromImgUrl(msPhotoUrl);
     var pgPhotoBuff = await getBufferFromImgUrl(pgPhotoUrl);
 
-    imgCompareAndRepor(t, msPhotoBuff, pgPhotoBuff, msPhotoId, pgPhotoId, "photo_diff");
+    imgCompareAndReport(t, msPhotoBuff, pgPhotoBuff, msPhotoId, pgPhotoId, "photo_diff");
   }
 });

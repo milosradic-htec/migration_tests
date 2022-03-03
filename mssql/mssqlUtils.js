@@ -64,11 +64,7 @@ async function msGetFoodsByRestorauntEmail(email) {
     var prices = ["SmallSizePrice", "MediumSizePrice", "LargeSizePrice"];
     for (let i = 0; i < result.recordset.length; i++) {
       var result2 = result.recordset[i];
-      prices.every((key) =>
-        result2[key] !== null && result2[key] !== ""
-          ? (result2[key] = result2[key].toString())
-          : result2[key]
-      );
+      prices.every((key) => result2[key] !== null && result2[key] !== "" ? (result2[key] = result2[key].toString()) : result2[key]);
     }
     return result.recordset;
   } catch (error) {
@@ -78,7 +74,7 @@ async function msGetFoodsByRestorauntEmail(email) {
 
 }
 
-async function msGetAllPhotoUrls(){
+async function msGetAllPhotoUrls() {
   try {
     let pool = await sql.connect(dbConfig)
     const result = await pool.query`SELECT PhotoId, FoodId, Photo, [Type]
